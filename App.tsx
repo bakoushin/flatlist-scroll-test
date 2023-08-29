@@ -9,6 +9,7 @@ import {
   View,
   ViewToken,
 } from 'react-native';
+import {onScroll, onViewableItemsChnaged} from './utils';
 
 type DataItem = {id: string; text: string};
 
@@ -27,6 +28,8 @@ function App(): JSX.Element {
 
   const handleScroll = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      onScroll();
+
       console.log('--- scroll');
     },
     [],
@@ -34,6 +37,8 @@ function App(): JSX.Element {
 
   const handleViewableItemsChanged = useCallback(
     ({viewableItems}: {viewableItems: ViewToken[]}) => {
+      onViewableItemsChnaged();
+
       console.log(
         '--- viewable items changed',
         viewableItems.map(({item}) => item.id),

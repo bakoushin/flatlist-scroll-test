@@ -1,6 +1,9 @@
 import {fireEvent, render} from '@testing-library/react-native';
 import React from 'react';
 import App from './App';
+import {onScroll, onViewableItemsChnaged} from './utils';
+
+jest.mock('./utils');
 
 describe('FlatList', () => {
   it('scrolls', () => {
@@ -32,5 +35,8 @@ describe('FlatList', () => {
       ...eventData,
       contentOffset: {y: 800},
     });
+
+    expect(onScroll).toBeCalledTimes(3);
+    expect(onViewableItemsChnaged).toBeCalledTimes(1);
   });
 });
