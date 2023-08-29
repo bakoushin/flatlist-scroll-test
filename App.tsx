@@ -22,10 +22,6 @@ const data: DataItem[] = [
 ];
 
 function App(): JSX.Element {
-  const viewabilityConfig = useRef({
-    itemVisiblePercentThreshold: 1,
-  });
-
   const handleScroll = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       onScroll();
@@ -68,9 +64,7 @@ function App(): JSX.Element {
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         onScroll={handleScroll}
-        viewabilityConfig={viewabilityConfig.current}
         onViewableItemsChanged={handleViewableItemsChanged}
-        getItemLayout={() => ({length: 300, offset: 30, index: 0})}
       />
     </SafeAreaView>
   );
