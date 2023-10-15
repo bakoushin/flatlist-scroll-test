@@ -1,4 +1,4 @@
-import React, {useCallback, useRef} from 'react';
+import React, {useCallback} from 'react';
 import {
   FlatList,
   NativeScrollEvent,
@@ -47,7 +47,7 @@ function App(): JSX.Element {
 
   const renderItem = ({item}: {item: DataItem}) => {
     return (
-      <View key={item.id} style={styles.listItem}>
+      <View testID={item.id} key={item.id} style={styles.listItem}>
         <Text>{item.text}</Text>
       </View>
     );
